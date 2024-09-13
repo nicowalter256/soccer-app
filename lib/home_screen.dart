@@ -11,6 +11,86 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void showBottomSheet(context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setStateSC) {
+          return Container(
+            width: MediaQuery.sizeOf(context).width,
+            color: Colors.transparent,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+              ),
+              child: SizedBox(
+                height: 600,
+                width: MediaQuery.sizeOf(context).width,
+                child: DefaultTabController(
+                  length: 2,
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        constraints: const BoxConstraints(maxHeight: 150.0),
+                        child: Material(
+                          color: Colors.white,
+                          child: TabBar(
+                            indicatorSize: TabBarIndicatorSize.tab,
+                            indicatorColor: Colors.black,
+                            labelColor: Colors.black,
+                            labelStyle: GoogleFonts.mulish(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            tabs: [
+                              Tab(
+                                text: 'PROFILE',
+                              ),
+                              Tab(
+                                text: 'STATS',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: TabBarView(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20, top: 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Overview",
+                                    style: GoogleFonts.mulish(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Text("Hello world!")
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +120,10 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(width: 50),
               Text(
                 "Paul Dybala",
-                style: GoogleFonts.mulish(color: Colors.white, fontSize: 30),
+                style: GoogleFonts.mulish(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30),
               )
             ],
           ),
@@ -60,16 +143,21 @@ class _HomeScreenState extends State<HomeScreen> {
           bottom: 70,
           left: 20,
           right: 20,
-          child: Container(
-            color: redColor,
-            height: 50,
-            child: Center(
-              child: Text(
-                "More stats".toUpperCase(),
-                style: GoogleFonts.mulish(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+          child: GestureDetector(
+            onTap: () => {
+              showBottomSheet(context),
+            },
+            child: Container(
+              color: redColor,
+              height: 50,
+              child: Center(
+                child: Text(
+                  "More stats".toUpperCase(),
+                  style: GoogleFonts.mulish(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
