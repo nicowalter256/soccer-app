@@ -18,15 +18,12 @@ class PlayerRepository {
           await dio.request('players?league=39&season=2022&team=35');
 
       List<Players> players = [];
-      for (Map<String, dynamic> user in response.data['data']) {
+      for (Map<String, dynamic> user in response.data['response']) {
         players.add(Players.fromJson(user));
       }
 
-      print("aajaajjajajakkakkakak: $response");
       return players;
-    } catch (e, s) {
-      print("aajaajjajajakkakkakak: $e");
-      print("aajaajjajajakkakkakak: $s");
+    } catch (e) {
       rethrow;
     }
   }
