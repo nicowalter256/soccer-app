@@ -6,11 +6,15 @@ class Player {
   int? id;
   String? name;
   int? age;
+  String? firstname;
+  String? lastname;
 
   Player({
     this.id,
     this.name,
     this.age,
+    this.firstname,
+    this.lastname,
   });
   Map toJson() {
     return _$PlayerToJson(this);
