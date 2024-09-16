@@ -8,6 +8,9 @@ class Player {
   int? age;
   String? firstname;
   String? lastname;
+  String? photo;
+  String? height;
+  Birth birth;
 
   Player({
     this.id,
@@ -15,6 +18,9 @@ class Player {
     this.age,
     this.firstname,
     this.lastname,
+    this.photo,
+    this.height,
+    required this.birth,
   });
   Map toJson() {
     return _$PlayerToJson(this);
@@ -22,5 +28,25 @@ class Player {
 
   factory Player.fromJson(Map<String, dynamic> json) {
     return _$PlayerFromJson(json);
+  }
+}
+
+@JsonSerializable()
+class Birth {
+  String? date;
+  String? place;
+  String? country;
+
+  Birth({
+    this.date,
+    this.place,
+    this.country,
+  });
+  Map toJson() {
+    return _$BirthToJson(this);
+  }
+
+  factory Birth.fromJson(Map<String, dynamic> json) {
+    return _$BirthFromJson(json);
   }
 }
