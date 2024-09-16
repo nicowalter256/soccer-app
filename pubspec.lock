@@ -182,6 +182,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.7"
+  dio_http:
+    dependency: "direct main"
+    description:
+      name: dio_http
+      sha256: "531772926f85f70572a3a2c8a9d4ff186f7f36dd96effeaece89b90716370a76"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.4"
   fake_async:
     dependency: transitive
     description:
